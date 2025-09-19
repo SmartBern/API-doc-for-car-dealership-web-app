@@ -367,10 +367,16 @@ components:
     ContactMessage:
       type: object
       required:
-        - carId
+        - name
+        - email
         - message
       properties:
-        carId:
+        name:
           type: string
+          example: Smith Doe
+        email:
+          type: string
+          example: smithdoe@myemail.com
         message:
           type: string
+          example: Is this car still available? I'm interested in getting it.
