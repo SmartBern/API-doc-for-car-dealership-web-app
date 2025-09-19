@@ -1,0 +1,367 @@
+openapi: 3.0.0
+info:
+  title: My Car Dealership API
+  description: >
+    AN API for new and pre-owned cars that dispays the year, brand, model, price, specs, and dealer contact for new cars, 
+    and that displays the year, brand, model, price, condition (mileage, accident history etc.), and seller 
+    contact.
+
+    🔐 No authentication required at the moment.  
+    (Authentication will be added in future versions.)
+  version: 1.0.0
+  contact:
+    name: Oluwaseun Lawal
+    email: seunlawal030@gmail.com
+    url: https://www.car-dealership-web-app.onrender.com
+
+servers:
+  - url: http://localhost:5000
+    description: Local development server
+
+tags:
+  - name: New Cars
+    description: Endpoints for listing and retrieving new cars
+  - name: Pre-owned Cars
+    description: Endpoints for listing and retrieving pre-owned cars
+  - name: Sign In
+    description: Endpoints for user registration and login
+  - name: Contact Dealer
+    description: Endpoints for contacting sellers
+  - name: Contact Seller
+    description: Endpoints for contacting sellers  
+
+paths:
+  /cars:
+  # GET Method for brand new cars
+    get:
+      tags:
+        - Cars
+      summary: Get all new cars
+      description: Returns a list of available new cars, optionally filtered by brand (using numeric ID)
+
+      parameters:
+        - in: query
+          name: brand
+          schema:
+            type: string
+          description: Filter cars by brand
+          example: Toyota
+        - in: query
+          name: id
+          schema:
+            type: number
+          description: Numeric ID used for filtering within a brand
+          example: 1
+
+      responses:
+        '200':
+          description: A JSON array of cars
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Car'
+        '500':
+          description: Internal server error
+
+    # POST Method for brand new cars
+    post:
+      tags:
+        - Cars
+      summary: Add a new car
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Car'
+            example:
+              id: 1
+              brand: Toyota
+              model: Camry
+              price: 25000
+      responses:
+        '201':
+          description: Car created successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Car'
+        '400':
+          description: Invalid input
+        '500':
+          description: Internal server error      
+
+
+  /preownedcars:
+  # GET Method for pre-owned cars
+    get:
+      tags:
+        - Pre-owned Cars
+      summary: Get all pre-owned cars
+      description: Returns a list of available pre-owned cars, optionally filtered by brand (using numeric ID)
+
+      parameters:
+        - in: query
+          name: brand
+          schema:
+            type: string
+          description: Filter pre-owned cars by brand
+          example: Toyota
+        - in: query
+          name: id
+          schema:
+            type: number
+          description: Numeric ID used for filtering within a brand
+          example: 1
+
+      responses:
+        '200':
+          description: A JSON array of pre-owned cars
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/PreOwnedCar'
+        '500':
+          description: Internal server error                
+
+    # POST Method for pre-owned cars
+    post:
+      tags:
+        - Pre-owned Cars
+      summary: Add a pre-owned car
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PreOwnedCar'
+            example:
+              id: 1
+              brand: Toyota
+              model: Camry
+              price: 25000
+      responses:
+        '201':
+          description: Car created successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PreOwnedCar'
+        '400':
+          description: Invalid input
+        '500':
+          description: Internal server error
+        
+
+# Not yet working at the backend
+  /users/register:
+    post:
+      tags:
+        - Users
+      summary: Register a new user
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UserRegistration'
+            example:
+              username: johndoe
+              email: johndoe@example.com
+              password: strongPassword123
+      responses:
+        '201':
+          description: User created successfully
+        '400':
+          description: Invalid input
+
+# Not yet initialized at the backend
+  /contact:
+    post:
+      tags:
+        - Contact
+      summary: Contact a seller
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ContactMessage'
+            example:
+              carId: car_123
+              message: Is this car still available?
+      responses:
+        '201':
+          description: Message sent successfully
+
+
+components:
+  schemas:
+    Car:
+      type: object
+      required:
+      - id
+      - year
+      - brand
+      - model
+      - buildType
+      - price
+      - image
+      - showTag
+      - tagLabel
+      - tagIcon
+      - tags
+      - engineType
+      - driveType
+      - baseMPG
+      - baseEngineSize
+      - safetyFeatures
+      - infotainment
+      - comfortFeatures
+      - otherFeatures
+      properties:
+        id:
+          type: string
+          description: Numeric identifier for the car (distinct from unique MongoDB _id)
+          example: 1
+        year:
+          type: number
+          example: 2025
+        brand:
+          type: string
+          example: Toyota
+        model:
+          type: string
+          example: Camry
+        buildType:
+          type: string
+          example: SE Hybrid Sedan
+        price:
+          type: number
+          example: 35920
+        image:
+          type: string
+          example: https://www.mycarimage.com/toyota-camry.png
+        showTag:
+          type: boolean
+          example: true
+        tagLabel:
+          type: string
+          example: New arrival
+        tagIcon:
+          type: string
+          example: new
+        tags: 
+          type: string
+          example: ["AWD/4WD", "Back-up camera", "Upgraded headlights", "Adaptive cruise control", "Blind spot monitoring"]
+        engineType:
+          type: string
+          example: Hybrid
+        driveType:
+          type: string
+          example: All Wheel Drive (AWD)
+        baseMPG:
+          type: string
+          example: 37 MPG
+        baseEngineSize:
+          type: string
+          example: 2.0 L
+        safetyFeatures:
+          type: string
+          example: standard
+        infotainment:
+          type: string
+          example: standard
+        comfortFeatures:
+          type: string
+          example: standard
+        otherFeatures:
+          type: string
+          example: standard
+    
+    PreownedCar:
+      type: object
+      required:
+      - id
+      - year
+      - brand
+      - model
+      - buildType
+      - price
+      - image
+      - showTag
+      - tagLabel
+      - tagIcon
+      - tags
+    
+      properties:
+        id:
+          type: string
+          description: Numeric identifier for the car (distinct from unique MongoDB _id)
+          example: 1
+        year:
+          type: number
+          example: 2025
+        brand:
+          type: string
+          example: Toyota
+        model:
+          type: string
+          example: Camry
+        buildType:
+          type: string
+          example: SE Hybrid Sedan
+        image:
+          type: string
+          example: https://www.mycarimage.com/toyota-camry.png
+        price:
+          type: number
+          example: 35920
+        mileage:
+          type: string
+          example: 58,472 miles
+        history:
+          type: string
+          example: No accident, 1 owner, personal use
+        showTag:
+          type: boolean
+          example: true
+        tagLabel:
+          type: string
+          example: New arrival
+        tagIcon:
+          type: string
+          example: new
+        tags: 
+          type: string
+          example: ["AWD/4WD", "Back-up camera", "Upgraded headlights", "Adaptive cruise control", "Blind spot monitoring"]
+             
+
+    UserRegistration:
+      type: object
+      required:
+        - username
+        - email
+        - password
+      properties:
+        username:
+          type: string
+        email:
+          type: string
+        password:
+          type: string
+
+    ContactMessage:
+      type: object
+      required:
+        - carId
+        - message
+      properties:
+        carId:
+          type: string
+        message:
+          type: string
