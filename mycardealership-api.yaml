@@ -78,9 +78,25 @@ paths:
               $ref: '#/components/schemas/Car'
             example:
               id: 1
-              brand: Toyota
-              model: Camry
-              price: 25000
+              year: 2025
+              brand: "Mercedes-Benz"
+              model: "GLE 350"
+              buildType: "4Matic 4dr SUV"
+              price: "73,870"
+              image: "https://www.carpix.com/sample.jpg"
+              showTag: "true"
+              tagLabel: "New listing"
+              tagIcon: "new"
+              tags: ["Bluetooth", "Navigation", "Keyless entry/start"]
+              engineType: "mild hybrid"
+              driveType: "All Wheel Drive (AWD)"
+              baseMPG: "22 MPG"
+              baseEngineSize: "2.0 L"
+              safetyFeatures: "robust"
+              infotainment: "standard options"
+              comfortFeatures: "standard options"
+              otherFeatures: "standard options"
+
       responses:
         '201':
           description: Car created successfully
