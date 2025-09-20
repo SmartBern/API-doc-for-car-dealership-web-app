@@ -4,7 +4,7 @@ info:
   description: >
     AN API for new and pre-owned cars that dispays the year, brand, model, price, specs, and dealer contact for new cars, 
     and that displays the year, brand, model, price, condition (mileage, accident history etc.), and seller 
-    contact.
+    contact for pre-owned cars.
 
     🔐 No authentication required at the moment.  
     (Authentication will be added in future versions.)
