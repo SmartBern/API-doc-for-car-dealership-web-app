@@ -365,7 +365,7 @@ components:
           type: string
           example: ["AWD/4WD", "Back-up camera", "Upgraded headlights", "Adaptive cruise control", "Blind spot monitoring"]
              
-
+    # Not yet initialized at the backend
     UserRegistration:
       type: object
       required:
@@ -380,6 +380,7 @@ components:
         password:
           type: string
 
+    # Not yet initialized at the backend
     ContactMessage:
       type: object
       required:
