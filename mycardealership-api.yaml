@@ -2,7 +2,7 @@ openapi: 3.0.0
 info:
   title: My Car Dealership API
   description: >
-    AN API for new and pre-owned cars that dispays the year, brand, model, price, specs, and dealer contact for new cars, 
+    An API for new and pre-owned cars that dispays the year, brand, model, price, specs, and dealer contact for new cars, 
     and that displays the year, brand, model, price, condition (mileage, accident history etc.), and seller 
     contact for pre-owned cars.
 
