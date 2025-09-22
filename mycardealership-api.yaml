@@ -308,7 +308,7 @@ components:
           type: string
           example: standard
     
-    PreownedCar:
+    PreOwnedCar:
       type: object
       required:
       - id
