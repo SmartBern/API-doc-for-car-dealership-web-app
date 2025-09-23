@@ -35,7 +35,7 @@ paths:
   # GET Method for brand new cars
     get:
       tags:
-        - Cars
+        - New Cars
       summary: Get all new cars
       description: Returns a list of available new cars, optionally filtered by brand (using numeric ID)
 
@@ -68,7 +68,7 @@ paths:
     # POST Method for brand new cars
     post:
       tags:
-        - Cars
+        - New Cars
       summary: Add a new car
       requestBody:
         required: true
