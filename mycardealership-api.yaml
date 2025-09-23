@@ -24,7 +24,9 @@ tags:
   - name: Pre-owned Cars
     description: Endpoints for listing and retrieving pre-owned cars
   - name: Sign In
-    description: Endpoints for user registration and login
+    description: Endpoint for user log in
+  - name: Create Account
+    description: Endpoint for user registration
   - name: Contact Dealer
     description: Endpoints for contacting sellers
   - name: Contact Seller
@@ -171,14 +173,57 @@ paths:
           description: Invalid input
         '500':
           description: Internal server error
-        
 
+  # Not yet initialized at the backend   
+  /signin:
+    post:
+      tags:
+        - Sign In
+      summary: User sign in
+      description: Allows a user to sign in with email and password.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - email
+                - password
+              properties:
+                email:
+                  type: string
+                  format: email
+                  example: user@example.com
+                password:
+                  type: string
+                  format: password
+                  example: secret123
+      responses:
+        '200':
+          description: Successfully signed in
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  token:
+                    type: string
+                    example: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...
+                  expiresIn:
+                    type: integer
+                    example: 3600
+        '400':
+          description: Invalid email or password
+        '500':
+          description: Internal server error
+          
 # Not yet working at the backend
   /users/register:
     post:
       tags:
-        - Users
-      summary: Register a new user
+        - Create Account
+      summary: New user registration
       requestBody:
         required: true
         content:
@@ -199,8 +244,8 @@ paths:
   /contact:
     post:
       tags:
-        - Contact
-      summary: Contact a seller
+        - Contact Dealer
+      summary: Contact a dealer of a brand new car
 
        #   - BearerAuth: []
 
