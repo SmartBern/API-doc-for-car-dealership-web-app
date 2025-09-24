@@ -28,9 +28,9 @@ tags:
   - name: Create Account
     description: Endpoint for user registration
   - name: Contact Dealer
-    description: Endpoints for contacting sellers
+    description: Endpoints for contacting new car dealers
   - name: Contact Seller
-    description: Endpoints for contacting sellers  
+    description: Endpoints for contacting pre-owned car sellers  
 
 paths:
   /cars:
@@ -241,7 +241,7 @@ paths:
           description: Invalid input
 
 # Not yet initialized at the backend
-  /contact:
+  /contact-dealer:
     post:
       tags:
         - Contact Dealer
@@ -267,7 +267,33 @@ paths:
           description: Internal server error
         '401':
           description: Unauthorized
+  
+  /contact-seller:
+    post:
+      tags:
+        - Contact Seller
+      summary: Contact seller of a pre-owned car
 
+       #   - BearerAuth: []
+
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ContactMessage'
+            example:
+              carId: car_123
+              message: Is this car still available?
+      responses:
+        '201':
+          description: Message sent successfully
+        '400':
+          description: Invalid input
+        '500':
+          description: Internal server error
+        '401':
+          description: Unauthorized
 
 components:
   schemas:
