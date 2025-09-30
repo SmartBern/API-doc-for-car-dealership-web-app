@@ -267,8 +267,7 @@ paths:
       tags:
         - Contact Dealer
       summary: Contact a dealer of a brand new car
-
-       #   - BearerAuth: []
+      description: "⚠️ Planned field – Not yet initialized in backend. Reserved for future implementation."
 
       requestBody:
         required: true
@@ -289,11 +288,13 @@ paths:
         '401':
           description: Unauthorized
   
+  # Not yet initialized at the backend
   /contact-seller:
     post:
       tags:
         - Contact Seller
       summary: Contact seller of a pre-owned car
+      description: "⚠️ Planned field – Not yet initialized in backend. Reserved for future implementation."
 
        #   - BearerAuth: []
 
@@ -480,6 +481,7 @@ components:
     # Not yet initialized at the backend
     ContactMessage:
       type: object
+      description: "⚠️ Planned field – Not yet initialized in backend. Reserved for future implementation."
       required:
         - name
         - email
