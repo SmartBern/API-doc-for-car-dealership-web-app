@@ -15,7 +15,7 @@ info:
     url: https://www.car-dealership-web-app.onrender.com
 
 servers:
-  - url: http://localhost:5000
+  - url: http://localhost:5000/api
     description: Local development server
 
 tags:
@@ -37,21 +37,7 @@ paths:
       tags:
         - New Cars
       summary: Get all new cars
-      description: Returns a list of available new cars, optionally filtered by brand (using numeric ID)
-
-      parameters:
-        - in: query
-          name: brand
-          schema:
-            type: string
-          description: Filter cars by brand
-          example: Toyota
-        - in: query
-          name: id
-          schema:
-            type: number
-          description: Numeric ID used for filtering within a brand
-          example: 1
+      description: Returns a list of available new cars
 
       responses:
         '200':
@@ -75,6 +61,7 @@ paths:
         content:
           application/json:
             schema:
+              type: object
               $ref: '#/components/schemas/Car'
             example:
               id: 1
@@ -116,21 +103,7 @@ paths:
       tags:
         - Pre-owned Cars
       summary: Get all pre-owned cars
-      description: Returns a list of available pre-owned cars, optionally filtered by brand (using numeric ID)
-
-      parameters:
-        - in: query
-          name: brand
-          schema:
-            type: string
-          description: Filter pre-owned cars by brand
-          example: Toyota
-        - in: query
-          name: id
-          schema:
-            type: number
-          description: Numeric ID used for filtering within a brand
-          example: 1
+      description: Returns a list of available pre-owned cars
 
       responses:
         '200':
