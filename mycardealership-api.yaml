@@ -174,8 +174,8 @@ paths:
         '500':
           description: Internal server error
 
-  # Not yet initialized at the backend   
-  /signin:
+     
+  /auth/login:
     post:
       tags:
         - Sign In
@@ -201,7 +201,7 @@ paths:
                   example: secret123
       responses:
         '200':
-          description: Successfully signed in
+          description: Login successful.
           content:
             application/json:
               schema:
@@ -214,9 +214,26 @@ paths:
                     type: integer
                     example: 3600
         '400':
-          description: Invalid email or password
+          description: Incorrect email or invalid password
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/User'
+                type: object
+                properties:
+                  error:
+                    type: string
+              examples:
+                IncorrectEmail:
+                  summary: Incorrect email
+                  value:
+                    error: "Incorrect email"
+                InvalidPassword:
+                  summary: Invalid password
+                  value:
+                    error: "Invalid password"
         '500':
-          description: Internal server error
+          description: Server error!
           
 # Not yet working at the backend
   /users/register:
@@ -229,7 +246,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/UserRegistration'
+              $ref: '#/components/schemas/User'
             example:
               username: johndoe
               email: johndoe@example.com
@@ -437,7 +454,7 @@ components:
           example: ["AWD/4WD", "Back-up camera", "Upgraded headlights", "Adaptive cruise control", "Blind spot monitoring"]
              
     # Not yet initialized at the backend
-    UserRegistration:
+    User:
       type: object
       required:
         - username
