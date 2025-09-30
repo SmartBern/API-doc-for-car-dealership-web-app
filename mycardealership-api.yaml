@@ -27,10 +27,8 @@ tags:
     description: Endpoint for user log in
   - name: Create Account
     description: Endpoint for user registration
-  - name: Contact Dealer
-    description: Endpoints for contacting new car dealers
-  - name: Contact Seller
-    description: Endpoints for contacting pre-owned car sellers  
+  - name: Planned
+    description: 🚧 Endpoints reserved for future use (not yet implemented)  
 
 paths:
   /cars:
@@ -261,11 +259,10 @@ paths:
         '500':
           description: Server error!
 
-# Not yet initialized at the backend
   /contact-dealer:
     post:
       tags:
-        - Contact Dealer
+        - Planned
       summary: Contact a dealer of a brand new car
       description: "⚠️ Planned field – Not yet initialized in backend. Reserved for future implementation."
 
@@ -288,11 +285,10 @@ paths:
         '401':
           description: Unauthorized
   
-  # Not yet initialized at the backend
   /contact-seller:
     post:
       tags:
-        - Contact Seller
+        - Planned
       summary: Contact seller of a pre-owned car
       description: "⚠️ Planned field – Not yet initialized in backend. Reserved for future implementation."
 
@@ -478,7 +474,7 @@ components:
         confirm password:
           type: string
 
-    # Not yet initialized at the backend
+
     ContactMessage:
       type: object
       description: "⚠️ Planned field – Not yet initialized in backend. Reserved for future implementation."
