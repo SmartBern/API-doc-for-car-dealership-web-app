@@ -235,8 +235,8 @@ paths:
         '500':
           description: Server error!
           
-# Not yet working at the backend
-  /users/register:
+
+  /auth/signup:
     post:
       tags:
         - Create Account
@@ -248,14 +248,18 @@ paths:
             schema:
               $ref: '#/components/schemas/User'
             example:
-              username: johndoe
+              first name: john
+              last name: doe
               email: johndoe@example.com
-              password: strongPassword123
+              password: Password123
+              confirm password: Password123
       responses:
         '201':
-          description: User created successfully
+          description: User created successfully.
         '400':
-          description: Invalid input
+          description: User already exists.
+        '500':
+          description: Server error!
 
 # Not yet initialized at the backend
   /contact-dealer:
@@ -453,19 +457,24 @@ components:
           type: string
           example: ["AWD/4WD", "Back-up camera", "Upgraded headlights", "Adaptive cruise control", "Blind spot monitoring"]
              
-    # Not yet initialized at the backend
     User:
       type: object
       required:
-        - username
+        - first name
+        - last name
         - email
         - password
+        - confirm password
       properties:
-        username:
+        first name:
+          type: string
+        last name:
           type: string
         email:
           type: string
         password:
+          type: string
+        confirm password:
           type: string
 
     # Not yet initialized at the backend
