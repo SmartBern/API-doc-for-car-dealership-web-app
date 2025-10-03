@@ -16,7 +16,9 @@ info:
 
 servers:
   - url: http://localhost:5000/api
-    description: Local development server
+    description: Local backend server (development)
+  - url: https://www.car-dealership-web-app.onrender.com/api
+    description: Production backend server (Render)
 
 tags:
   - name: New Cars
@@ -63,34 +65,10 @@ paths:
             schema:
               type: object
               $ref: '#/components/schemas/Car'
-            example:
-              id: 1
-              year: 2025
-              brand: "Mercedes-Benz"
-              model: "GLE 350"
-              buildType: "4Matic 4dr SUV"
-              price: "73,870"
-              image: "https://www.carpix.com/sample.jpg"
-              showTag: "true"
-              tagLabel: "New listing"
-              tagIcon: "new"
-              tags: ["Bluetooth", "Navigation", "Keyless entry/start"]
-              engineType: "mild hybrid"
-              driveType: "All Wheel Drive (AWD)"
-              baseMPG: "22 MPG"
-              baseEngineSize: "2.0 L"
-              safetyFeatures: "robust"
-              infotainment: "standard options"
-              comfortFeatures: "standard options"
-              otherFeatures: "standard options"
 
       responses:
         '201':
           description: Car created successfully
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Car'
         '400':
           description: Invalid input
         '500':
