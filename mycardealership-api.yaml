@@ -197,11 +197,11 @@ paths:
             schema:
               $ref: '#/components/schemas/User'
             example:
-              first name: john
-              last name: doe
+              firstName: john
+              lastName: doe
               email: johndoe@example.com
               password: Password123
-              confirm password: Password123
+              confirmPassword: Password123
       responses:
         '201':
           description: User created successfully.
@@ -408,11 +408,11 @@ components:
     User:
       type: object
       required:
-        - first name
-        - last name
+        - firstName
+        - lastName
         - email
         - password
-        - confirm password
+        - confirmPassword
       properties:
         first name:
           type: string
