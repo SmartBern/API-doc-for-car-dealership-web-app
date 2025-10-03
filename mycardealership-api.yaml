@@ -108,9 +108,19 @@ paths:
               $ref: '#/components/schemas/PreOwnedCar'
             example:
               id: 1
+              year: 2023
               brand: Toyota
               model: Camry
-              price: 25000
+              buildType: SE Hybrid Sedan
+              image: https://www.mycarimage.com/toyota-camry.png
+              price: 35920
+              mileage: 58,472 miles
+              history: No accident, 1 owner, personal use
+              showTag: true
+              tagLabel: New arrival
+              tagIcon: new
+              tags: ["AWD/4WD", "Back-up camera", "Upgraded headlights", "Adaptive cruise control", "Blind spot monitoring"]
+              
       responses:
         '201':
           description: Pre-owned Car added successfully
