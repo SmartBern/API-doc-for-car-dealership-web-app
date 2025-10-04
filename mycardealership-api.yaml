@@ -12,13 +12,14 @@ info:
   contact:
     name: Oluwaseun Lawal
     email: seunlawal030@gmail.com
-    url: https://www.car-dealership-web-app.onrender.com
+    url: https://oluwaseun-lawal.vercel.com
 
 servers:
+  - url: https://car-dealership-web-app.onrender.com/api
+    description: Production backend server (Render)
   - url: http://localhost:5000/api
     description: Local backend server (development)
-  - url: https://www.car-dealership-web-app.onrender.com/api
-    description: Production backend server (Render)
+  
 
 tags:
   - name: New Cars
@@ -120,7 +121,7 @@ paths:
               tagLabel: New arrival
               tagIcon: new
               tags: ["AWD/4WD", "Back-up camera", "Upgraded headlights", "Adaptive cruise control", "Blind spot monitoring"]
-              
+
       responses:
         '201':
           description: Pre-owned Car added successfully
